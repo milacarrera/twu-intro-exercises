@@ -1,15 +1,22 @@
-public class IsocelesTriangle {
+public class Diamond {
     public static void main(String[] args) {
-        System.out.println(generateTriangle(3));
+        System.out.println(generateDiamond(3));
     }
 
-    public static String generateTriangle(int n) {
+    public static String generateDiamond(int n) {
         int totalCharsPerLine = calcCharsPerLine(n);
-        String triangle = "";
-        for (int i = 0; i < n; i++) {
-            triangle += generateLine(totalCharsPerLine, i) + "\n";
+        int lines = n + (n - 1);
+        String diamond = "";
+
+        for (int i = 0; i < lines; i++) {
+            if (i <= ((lines/2) - 1)) {
+                diamond += generateLine(totalCharsPerLine, i) + "\n";
+            } else {
+                n--;
+                diamond += generateLine(totalCharsPerLine, n) + "\n";
+            }
         }
-        return triangle;
+        return diamond;
     }
 
     public static int calcCharsPerLine(int n) {
